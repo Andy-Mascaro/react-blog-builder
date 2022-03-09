@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { setFont, setAlign } from 'react';
 
 import './Editor.css';
 
@@ -14,7 +14,11 @@ export default function Editor() {
         <label>Subtitle</label>
       </div>
       <div className="form-control">
-        <select>
+        <select 
+          onChange={(e) => {
+            setFont(e.target.value);
+          }}
+        >
           <option value="architect">{"Architect's Daughter"}</option>
           <option value="comforter">Comforter</option>
           <option value="fredoka">Fredoka</option>
@@ -24,11 +28,16 @@ export default function Editor() {
           <option value="roboto-mono">Roboto Mono</option>
           <option value="titillium">Titillium</option>
         </select>
+       
         <label>Font</label>
       </div>
       <div className="form-control">
         <label>Alignment</label>
-        <div className="radio-group">
+        <div className="radio-group"
+          onClick={() => {
+            setAlign('center');
+          }}
+        >
           <label>
             <input name="align" type="radio" value="left" />
             <i className="ri-align-left"></i>
