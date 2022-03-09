@@ -1,17 +1,27 @@
-import React, { setFont, setAlign } from 'react';
+import React from 'react';
 
 import './Editor.css';
 
-export default function Editor() {
+export default function Editor({ setFont, setAlign, setTitle, setText, setSubtitle }) {
   return (
     <div className="editor">
       <div className="form-control">
-        <input name="title" type="text" />
+        <input name="title" type="text" 
+          onChange={(e) => {
+            setTitle(e.target.value);
+          }}
+        />
         <label htmlFor="title">Title</label>
       </div>
       <div className="form-control">
-        <input type="text" />
-        <label>Subtitle</label>
+        <input type="text" 
+          onChange={(e) => {
+            setSubtitle(e.target.value);
+          }}/>
+        <label>Subtitle
+        
+        
+        </label>
       </div>
       <div className="form-control">
         <select 
@@ -34,8 +44,8 @@ export default function Editor() {
       <div className="form-control">
         <label>Alignment</label>
         <div className="radio-group"
-          onClick={() => {
-            setAlign('center');
+          onChange={(e) => {
+            setAlign(e.target.value);
           }}
         >
           <label>
@@ -43,17 +53,24 @@ export default function Editor() {
             <i className="ri-align-left"></i>
           </label>
           <label>
-            <input name="align" type="radio" value="center" />
+            <input name="align" type="radio" value="center"/>
             <i className="ri-align-center"></i>
           </label>
           <label>
-            <input name="align" type="radio" value="right" />
+            <input name="align" type="radio" value="right"/>
             <i className="ri-align-right"></i>
           </label>
         </div>
       </div>
       <div className="form-control">
-        <textarea style={{ height: '250px' }} />
+        <textarea style={{ height: '250px' }}
+          onChange={(e) => {
+            setText(e.target.value);
+          }}
+        >
+
+        </textarea>
+        
         <label>Text</label>
       </div>
     </div>
